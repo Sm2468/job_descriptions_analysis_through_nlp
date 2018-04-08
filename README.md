@@ -5,3 +5,6 @@ Using Natural Language Processing two techniques, Regular Expressions and Named 
 
 
 ![vacancies](https://user-images.githubusercontent.com/38191121/38473057-8a337334-3b89-11e8-9cbc-1ca84367e9b2.jpg)
+
+
+![skills](https://user-images.githubusercontent.com/38191121/38473067-b1ebd6fa-3b89-11e8-965e-1127831c8092.png)
