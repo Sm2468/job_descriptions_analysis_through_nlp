@@ -1,0 +1,73 @@
+import nltk, re
+from nltk.corpus import ieer
+from nltk import tag
+from nltk.tag import StanfordNERTagger 
+from nltk import FreqDist
+
+st = StanfordNERTagger('/home/michele/Downloads/stanford-ner-2014-06-16/classifiers/english.all.3class.distsim.crf.ser.gz','/home/michele/Downloads/stanford-ner-2014-06-16/stanford-ner.jar')
+
+file = open("/home/michele/Documents/tm/monster-board/monster_com-job_sample.txt")
+text = file.readlines()
+
+split_ads = []
+for job_ad in text:
+    current_text = []
+    sents = nltk.sent_tokenize(job_ad)
+    for sent in sents:
+        tokens = nltk.word_tokenize(sent.lower())
+        current_text.append(tokens)
+    split_ads.append(current_text)                     
+
+a = open('/home/michele/Documents/tm/states')
+state_list = a.read().split('\n')
+
+x = open('/home/michele/Documents/tm/afkortingen')
+abbr_list = x.read().split('\n')
+
+x_list = []
+for i in split_ads:
+    x_list += i
+y_list = []
+for j in x_list:
+    y_list += j
+
+from nltk.corpus import stopwords
+stop = set(stopwords.words('english'))
+stopwords = stop.copy()
+stopwords.add('united')
+stopwords.add('states')
+stopwords.add('of')
+stopwords.add('america')
+stopwords.add('american')
+
+token_list1 = []
+for token in y_list:
+    if token not in stopwords:
+        token_list1.append(token)     
+
+punctuation = re.compile(r'[-.?!,":;()|0-9]')
+token_list2 = []
+for token in token_list1:
+    word = punctuation.sub("", token)
+    if len(word)>0:
+        token_list2.append(word.lower())
+
+tagged = st.tag(token_list2[:800000])
+tagged2 = st.tag(token_list2[800001:1600000])
+tagged3 = st.tag(token_list2[1600001:2400000])
+tagged4 = st.tag(token_list2[2400001:3000000])
+tagged5 = st.tag(token_list2[3000001:3600000])
+tagged6 = st.tag(token_list2[3600001:4200000])
+tagged7 = st.tag(token_list2[4200001:4800000])
+tagged8 = st.tag(token_list2[4800001:5400000])
+tagged9 = st.tag(token_list2[5400001:6000000])
+tagged10 = st.tag(token_list2[6000000:])
+
+loc_list = [item for item in tagged + tagged2 + tagged3 + tagged4 + tagged5 + tagged6 + tagged7 + tagged8 + tagged9 + tagged10 if 'LOCATION' in item]
+
+locs = []
+for i in loc_list:
+    locs.append(i[0])
+
+freqdist = FreqDist(locs)
+print(freqdist.most_common(100))
