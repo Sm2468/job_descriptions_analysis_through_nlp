@@ -10,7 +10,9 @@ For more information, visit this link: https://goo.gl/jTwbH2
 
 
 - For the extraction of skills, the code can be found under the file 'extracting_skills_regex'. Along with the dataset (link: https://goo.gl/qVJ2Dk) it is possible to decipher which skills are sought most by employers. However, as you will discover, the regular expressions provide a lot of redundant, irrelevant output that sometimes have nothing to do with the skills you want to extract. Therefore you need to apply the Gazetteer file on the results in order to gain more precise results. The output eventually looks as follows:
-(FOTO OUTPUT)
+
+![skills_output](https://user-images.githubusercontent.com/38191121/38473341-21bf04ac-3b8f-11e8-8ff3-62c1082f1c7e.JPG)
+
 
 
 - Once you have runned your code and gained output, it is possible to visualize these results by means of a wordcloud. 
@@ -22,7 +24,7 @@ The code for this visualisation can also be found on this Github platform.
 
 
 - For the extraction of the locations, you need to use the textfile version of the dataset in order to be able to apply the Stanford NER tagger on the job offers. Once you have applied the code (extracting_locations_NER) on the data, you are able to see in which states most of the job offers are located. 
-(FOTO OUTPUT LOCATIONS )
+![locations_output](https://user-images.githubusercontent.com/38191121/38473339-1e7549b4-3b8f-11e8-8cf4-6a98c135503d.JPG)
 
 
 - Ofcourse also this result can be visualized properly. By means of a bar chart it is possible to gain more information about the states and their job offers.
