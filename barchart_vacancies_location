@@ -1,0 +1,25 @@
+#bar chart
+
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <div id="chart_div"></div>
+google.charts.load('current', {packages: ['corechart', 'bar']});
+google.charts.setOnLoadCallback(drawBasic);
+function drawBasic() {
+      var data = google.visualization.arrayToDataTable([
+        ['Location', 'Number of vacancies',],
+        ['Texas', 908],
+        ['California', 641],
+        ['New York', 517],
+        ['Washington', 503],
+        ['Florida', 454],  ]);
+      var options = {
+        title: 'Number of vacancies per location',
+        chartArea: {width: '50%'},
+        hAxis: {
+          title: 'Total number of vacancies',
+          minValue: 0 },
+        vAxis: {
+          title: 'Location'
+        }
+      };
+var chart = new google.visualization.BarChart(document.getElementById('chart_div'));chart.draw(data, options); }
