@@ -9,13 +9,20 @@ Many Natural Language Processing tasks are performed in pipelines. The pipeline 
 
 
 For the extraction of skills, the code can be found under the file 'extracting_skills_regex'. Along with the dataset (link: https://goo.gl/qVJ2Dk) it is possible to decipher which skills are sought most by employers. The output eventually looks as follows:
+(FOTO OUTPUT)
 
 
-
-Once you have runned your code and gained output, it is possible to visualize these results by means of a wordcloud. The code for this visualisation can also be found on this Github platform.
+Once you have runned your code and gained output, it is possible to visualize these results by means of a wordcloud. 
+The code for this visualisation can also be found on this Github platform.
 ![skills](https://user-images.githubusercontent.com/38191121/38473067-b1ebd6fa-3b89-11e8-965e-1127831c8092.png)
 
 
 
+For the extraction of the locations, you need to use the textfile version of the dataset in order to be able to apply the Stanford NER tagger on the job offers. Once you have applied the code (extracting_locations_NER) on the data, you are able to see in which states most of the job offers are located. 
+(FOTO OUTPUT LOCATIONS )
 
+
+Ofcourse also this result can be visualized properly. By means of a bar chart it is possible to gain more information about the states and their job offers.
 ![vacancies](https://user-images.githubusercontent.com/38191121/38473057-8a337334-3b89-11e8-9cbc-1ca84367e9b2.jpg)
+
+We hope you found this small tutorial helpful!
