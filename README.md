@@ -8,7 +8,7 @@ Using Natural Language Processing two techniques, Regular Expressions and Named 
 
 
 
-2. For the extraction of skills, the code can be found under the file 'extracting_skills_regex'. Along with the dataset (link: https://goo.gl/qVJ2Dk) it is possible to decipher which skills are sought most by employers. The output eventually looks as follows:
+2. For the extraction of skills, the code can be found under the file 'extracting_skills_regex'. Along with the dataset (link: https://goo.gl/qVJ2Dk) it is possible to decipher which skills are sought most by employers. However, as you will discover, the regular expressions provide a lot of redundant, irrelevant output that sometimes have nothing to do with the skills you want to extract. Therefore you need to apply the Gazetteer file on the results in order to gain more precise results. The output eventually looks as follows:
 (FOTO OUTPUT)
 
 
