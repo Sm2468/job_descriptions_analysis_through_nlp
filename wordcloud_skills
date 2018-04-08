@@ -1,0 +1,18 @@
+#Word Clouds
+import os
+import wordcloud
+import imageio
+from PIL import Image
+from imageio import imread
+from wordcloud import WordCloud, STOPWORDS
+stopwords1 = STOPWORDS.copy()
+with open("skills_list4.txt") as f:
+	lines = f.readlines()
+text="".join(lines)
+
+wc = WordCloud(background_color="white", max_words=100, stopwords=stopwords1)
+# Generate the graph
+wc.generate(text)
+plt.figure()
+plt.imshow(wc)
+plt.show()
