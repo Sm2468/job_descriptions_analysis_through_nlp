@@ -1,0 +1,63 @@
+%skills: using regular expression
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+import seaborn as sns
+import nltk, re
+from nltk.corpus import ieer
+from nltk import tag, FreqDist
+
+df = pd.read_csv("/home/michele/Documents/tm/monster-board/monster_com-job_sample.csv")
+
+
+desc = df['job_description']
+
+token_sents = []
+
+for i in desc:
+    token_sents.append(nltk.sent_tokenize(i))
+
+sentlist = []
+for j in token_sents:
+    sentlist += j
+
+regex = r'(?i)skill|experience|require|must|prefer|abilit'
+skill_list = [w.lower() for w in sentlist if re.search(regex, w)]
+
+tokens = []
+for lis in (nltk.word_tokenize(sent) for sent in skill_list):
+    tokens += lis
+
+from nltk.corpus import stopwords
+stop = set(stopwords.words('english'))
+
+
+token_list1 = []
+for token in tokens:
+    if token not in stop:
+        token_list1.append(token)     
+    
+punctuation = re.compile(r'[-.?!,":;()|0-9]')
+token_list2 = []
+for token in token_list1:
+    word = punctuation.sub("", token)
+    if len(word)>0:
+        token_list2.append(word.lower())
+
+
+k = open('/home/michele/Documents/tm/gazetteer.txt')
+l = k.read().split(', ')
+gazetteer_list = []
+for i in l:
+    gazetteer_list.append(i.lower())
+
+gz = []
+for i in token_list2:
+    for j in gazetteer_list:
+        if i == j:
+            gz.append(i)
+
+freqdist = FreqDist(gz)
+print(freqdist.most_common(100))
